@@ -1,2 +1,5 @@
-# fed-tools
-A tried and tested set of front-end libraries for quick and easy use, and setup.
+# Aten FED Tools
+
+Tiny, dependency-free javascript library for Aten FED tooling.
+
+---
