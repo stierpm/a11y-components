@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FED Tools Components</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        section {
+            margin-bottom: 50px;
+        }
+        .component-example {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .code-example {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            font-family: monospace;
+        }
+
+        /* Accordion Component Styles */
+        .c-accordion {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .c-accordion__trigger {
+            background-color: #f5f5f5;
+            border: none;
+            width: 100%;
+            text-align: left;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .c-accordion__trigger::after {
+            content: "+";
+            font-size: 1.2rem;
+        }
+        .c-accordion__trigger.is-expanded::after {
+            content: "-";
+        }
+        .c-accordion__content {
+            display: none;
+            padding: 15px;
+        }
+        .c-accordion__content.is-expanded {
+            display: block;
+        }
+
+        /* Tree View Component Styles */
+        .menu {
+            list-style: none;
+            padding-left: 0;
+        }
+        .menu ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        .menu__link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #333;
+            border-radius: 4px;
+        }
+        .menu__link:hover {
+            background-color: #f5f5f5;
+        }
+        .menu__link-trigger {
+            background: none;
+            border: none;
+            font-size: 0.8rem;
+            cursor: pointer;
+            color: #666;
+        }
+        .menu__link-trigger::before {
+            content: "+";
+        }
+        .menu__link[aria-expanded="true"] .menu__link-trigger::before {
+            content: "-";
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FED Tools Components</h1>
+        <p>Examples of each component in the /components directory</p>
+    </header>
+
+    <main>
+        <section id="accordion">
+            <h2>Accordion Component</h2>
+            <p>An accessible accordion component that follows WCAG guidelines.</p>
+
+            <div class="component-example">
+                <div class="c-accordion">
+                    <button class="c-accordion__trigger" aria-expanded="false">Accordion Section 1</button>
+                    <div class="c-accordion__content">
+                        <p>This is the content for section 1. The accordion component allows you to show and hide content in a collapsible panel.</p>
+                    </div>
+                </div>
+
+                <div class="c-accordion">
+                    <button class="c-accordion__trigger" aria-expanded="false">Accordion Section 2</button>
+                    <div class="c-accordion__content">
+                        <p>This is the content for section 2. When you click on the header, this content will toggle visibility.</p>
+                    </div>
+                </div>
+
+                <div class="c-accordion">
+                    <button class="c-accordion__trigger" aria-expanded="false">Accordion Section 3</button>
+                    <div class="c-accordion__content">
+                        <p>This is the content for section 3. The accordion is fully accessible and can be controlled via keyboard.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>HTML Structure</h3>
+            <div class="code-example">
+<pre>
+&lt;div class="c-accordion"&gt;
+    &lt;button class="c-accordion__trigger" aria-expanded="false"&gt;Accordion Section&lt;/button&gt;
+    &lt;div class="c-accordion__content"&gt;
+        &lt;p&gt;This is the accordion content.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+            </div>
+
+            <h3>JavaScript Initialization</h3>
+            <div class="code-example">
+<pre>
+// Initialize all accordions on the page
+document.querySelectorAll('.c-accordion').forEach(accordion => {
+    new A11yAccordion(accordion);
+});
+</pre>
+            </div>
+        </section>
+
+        <section id="tree-view">
+            <h2>Tree View Component</h2>
+            <p>An accessible tree view navigation component that follows WAI-ARIA best practices.</p>
+
+            <div class="component-example">
+                <nav class="tree-view-nav">
+                    <ul class="menu menu--level-1">
+                        <li class="menu-item">
+                            <a href="#" class="menu__link menu__link--level-1" aria-role="tree-item">Home</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="menu__link menu__link--level-1" aria-role="tree-item">Products</a>
+                            <ul class="menu menu--level-2">
+                                <li class="menu-item">
+                                    <a href="#" class="menu__link menu__link--level-2" aria-role="tree-item">Category 1</a>
+                                    <ul class="menu menu--level-3">
+                                        <li class="menu-item">
+                                            <a href="#" class="menu__link menu__link--level-3" aria-role="tree-item">Product A</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#" class="menu__link menu__link--level-3" aria-role="tree-item">Product B</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="menu__link menu__link--level-2" aria-role="tree-item">Category 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="menu__link menu__link--level-1" aria-role="tree-item">About</a>
+                            <ul class="menu menu--level-2">
+                                <li class="menu-item">
+                                    <a href="#" class="menu__link menu__link--level-2" aria-role="tree-item">Our Story</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="menu__link menu__link--level-2" aria-role="tree-item">Team</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="menu__link menu__link--level-1" aria-role="tree-item">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <h3>HTML Structure</h3>
+            <div class="code-example">
+<pre>
+&lt;nav class="tree-view-nav"&gt;
+    &lt;ul class="menu menu--level-1"&gt;
+        &lt;li class="menu-item"&gt;
+            &lt;a href="#" class="menu__link menu__link--level-1" aria-role="tree-item"&gt;Parent Item&lt;/a&gt;
+            &lt;ul class="menu menu--level-2"&gt;
+                &lt;li class="menu-item"&gt;
+                    &lt;a href="#" class="menu__link menu__link--level-2" aria-role="tree-item"&gt;Child Item&lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</pre>
+            </div>
+
+            <h3>JavaScript Initialization</h3>
+            <div class="code-example">
+<pre>
+// Initialize the tree view navigation
+document.querySelectorAll('.tree-view-nav').forEach(nav => {
+    new A11YTreeViewNavigation(nav);
+});
+</pre>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 FED Tools. All rights reserved.</p>
+    </footer>
+
+    <!-- Include the component JavaScript files -->
+    <script src="components/accordion/Accordion.js"></script>
+    <script src="components/tree-view/TreeView.js"></script>
+
+    <script>
+        // Initialize components after the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize accordions
+            document.querySelectorAll('.c-accordion').forEach(accordion => {
+                new A11yAccordion(accordion);
+            });
+
+            // Initialize tree view navigation
+            document.querySelectorAll('.tree-view-nav').forEach(nav => {
+                new A11YTreeViewNavigation(nav);
+            });
+        });
+    </script>
+</body>
+</html>
