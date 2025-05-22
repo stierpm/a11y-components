@@ -106,9 +106,4 @@ class A11yAccordion {
   isExpanded = () => this.accordionTrigger.classList.contains(this.expandedClass);
 }
 
-Drupal.behaviors.kibrAccordion = {
-  attach(context) {
-    const accordions = once('dixpark-accordion', context.querySelectorAll('.c-accordion'));
-    accordions.forEach((element) => new A11yAccordion(element));
-  },
-};
+export default A11yAccordion;
