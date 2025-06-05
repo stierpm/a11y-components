@@ -8,7 +8,7 @@
  * Functionality for an Accordion or group of Accordions using accessible methods
  * as described by WCAG: https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
  */
-class A11yAccordion {
+export class A11yAccordion {
   constructor(wrapper) {
     this.expandedClass = 'is-expanded';
     this.wrapper = wrapper;
@@ -105,5 +105,3 @@ class A11yAccordion {
    */
   isExpanded = () => this.accordionTrigger.classList.contains(this.expandedClass);
 }
-
-export default A11yAccordion;

@@ -1,5 +1,5 @@
-# Aten FED Tools
+# Front End A11Y Tools
 
-Tiny, dependency-free javascript library for Aten FED tooling.
+A collection of front-end JavaScript libraries that adhere ceremoniously with WCAG guidelines.
 
 ---
