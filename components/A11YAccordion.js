@@ -9,11 +9,11 @@
  * as described by WCAG: https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
  */
 export class A11yAccordion {
-  constructor(wrapper) {
+  constructor(element) {
     this.expandedClass = 'is-expanded';
-    this.wrapper = wrapper;
-    this.accordionContent = null;
-    this.accordionTrigger = null;
+    this.element = element;
+    this.accordionTrigger = this.element.querySelector('.accordion__trigger[aria-controls]');
+    this.accordionPanel = this.element.querySelector(`#${this.getControlledByID(this.accordionTrigger)}`);
     this.init();
   }
 
@@ -24,8 +24,6 @@ export class A11yAccordion {
    * @return {void} Does not return any value.
    */
   init() {
-    this.accordionTrigger = this.wrapper.querySelector('.c-accordion__trigger');
-    this.accordionContent = this.wrapper.querySelector('.c-accordion__content');
     this.accordionTrigger.addEventListener('click', this.onClickTrigger);
     this.accordionTrigger.addEventListener('keydown', this.onKeydownTrigger);
   }
@@ -77,7 +75,7 @@ export class A11yAccordion {
    * @return {void} Does not return a value.
    */
   expand() {
-    this.accordionContent.classList.add(this.expandedClass);
+    this.accordionPanel.classList.add(this.expandedClass);
     this.accordionTrigger.classList.add(this.expandedClass);
     this.accordionTrigger.setAttribute('aria-expanded', 'true');
   }
@@ -89,7 +87,7 @@ export class A11yAccordion {
    * @return {void} Does not return a value.
    */
   collapse() {
-    this.accordionContent.classList.remove(this.expandedClass);
+    this.accordionPanel.classList.remove(this.expandedClass);
     this.accordionTrigger.classList.remove(this.expandedClass);
     this.accordionTrigger.setAttribute('aria-expanded', 'false');
   }
@@ -104,4 +102,17 @@ export class A11yAccordion {
    * @return {boolean} True if the accordion is expanded, otherwise false.
    */
   isExpanded = () => this.accordionTrigger.classList.contains(this.expandedClass);
+
+  /**
+   * Retrieves the ID of the element controlled by the given target element.
+   *
+   * This function accesses the `aria-controls` attribute of the provided target
+   * element and returns its value. The `aria-controls` attribute typically
+   * contains the ID of another element that the target element controls or affects.
+   *
+   * @param {Element} target - The DOM element from which to retrieve the `aria-controls` attribute.
+   * @returns {string | null} The value of the `aria-controls` attribute, or null if the attribute
+   * is not present.
+   */
+  getControlledByID = (target) => target.getAttribute('aria-controls');
 }
