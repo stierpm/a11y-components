@@ -48,7 +48,7 @@
       padding: 15px;
       margin-bottom: 20px;
     }
-    .c-accordion__trigger {
+    .accordion__trigger {
       align-items: center;
       background-color: var(--fed-tools-clr-gray-100);
       border: none;
@@ -61,18 +61,18 @@
       text-align: left;
       width: 100%;
     }
-    .c-accordion__trigger::after {
+    .accordion__trigger::after {
       content: "+";
       font-size: 1.2rem;
     }
-    .c-accordion__trigger.is-expanded::after {
+    .accordion__trigger.is-expanded::after {
       content: "-";
     }
-    .c-accordion__content {
+    .accordion__content {
       display: none;
       padding: 15px;
     }
-    .c-accordion__content.is-expanded {
+    .accordion__content.is-expanded {
       display: block;
     }
   </style>
@@ -89,23 +89,32 @@
     <h2>Accordion Component</h2>
     <p>An accessible accordion component that follows WCAG guidelines.</p>
 
-    <div class="c-accordion">
-      <button class="c-accordion__trigger" aria-expanded="false">Accordion Section 1</button>
-      <div class="c-accordion__content">
+    <div class="accordion">
+      <h3 class="accordion__heading">
+        <button class="accordion__trigger" aria-expanded="false">Accordion Section 1</button>
+      </h3>
+
+      <div class="accordion__content">
         <p>This is the content for section 1. The accordion component allows you to show and hide content in a collapsible panel.</p>
       </div>
     </div>
 
-    <div class="c-accordion">
-      <button class="c-accordion__trigger" aria-expanded="false">Accordion Section 2</button>
-      <div class="c-accordion__content">
+    <div class="accordion">
+      <h3 class="accordion__heading">
+        <button class="accordion__trigger" aria-expanded="false">Accordion Section 2</button>
+      </h3>
+
+      <div class="accordion__content">
         <p>This is the content for section 2. When you click on the header, this content will toggle visibility.</p>
       </div>
     </div>
 
-    <div class="c-accordion">
-      <button class="c-accordion__trigger" aria-expanded="false">Accordion Section 3</button>
-      <div class="c-accordion__content">
+    <div class="accordion">
+      <h3 class="accordion__heading">
+        <button class="accordion__trigger" aria-expanded="false">Accordion Section 3</button>
+      </h3>
+
+      <div class="accordion__content">
         <p>This is the content for section 3. The accordion is fully accessible and can be controlled via keyboard.</p>
       </div>
     </div>
@@ -114,10 +123,13 @@
     <div class="code-example">
       <pre>
       &lt;div class="c-accordion"&gt;
+        &lt;h3 class="c-accordion__heading"&gt;
           &lt;button class="c-accordion__trigger" aria-expanded="false"&gt;Accordion Section&lt;/button&gt;
-          &lt;div class="c-accordion__content"&gt;
-              &lt;p&gt;This is the accordion content.&lt;/p&gt;
-          &lt;/div&gt;
+        &lt;/h3&gt;
+
+        &lt;div class="c-accordion__content"&gt;
+          &lt;p&gt;This is the accordion content.&lt;/p&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
       </pre>
     </div>
@@ -144,7 +156,7 @@
   // Initialize components after the DOM is fully loaded
   document.addEventListener('DOMContentLoaded', function() {
     // Initialize accordions
-    document.querySelectorAll('.c-accordion').forEach(accordion => {
+    document.querySelectorAll('.accordion').forEach(accordion => {
       new A11yAccordion(accordion);
     });
   });

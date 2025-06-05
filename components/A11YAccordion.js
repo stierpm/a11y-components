@@ -9,11 +9,11 @@
  * as described by WCAG: https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
  */
 export class A11yAccordion {
-  constructor(wrapper) {
+  constructor(element) {
     this.expandedClass = 'is-expanded';
-    this.wrapper = wrapper;
-    this.accordionContent = null;
-    this.accordionTrigger = null;
+    this.wrapper = element;
+    this.accordionTrigger = this.wrapper.querySelector('.accordion__trigger');
+    this.accordionContent = this.wrapper.querySelector('.accordion__content');
     this.init();
   }
 
@@ -24,8 +24,6 @@ export class A11yAccordion {
    * @return {void} Does not return any value.
    */
   init() {
-    this.accordionTrigger = this.wrapper.querySelector('.c-accordion__trigger');
-    this.accordionContent = this.wrapper.querySelector('.c-accordion__content');
     this.accordionTrigger.addEventListener('click', this.onClickTrigger);
     this.accordionTrigger.addEventListener('keydown', this.onKeydownTrigger);
   }
