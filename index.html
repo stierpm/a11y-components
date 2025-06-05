@@ -91,30 +91,55 @@
 
     <div class="accordion">
       <h3 class="accordion__heading">
-        <button class="accordion__trigger" aria-expanded="false">Accordion Section 1</button>
+        <button id="accordion-trigger-01"
+                class="accordion__trigger"
+                aria-expanded="false"
+                aria-controls="accordion-section-01">
+          Accordion Section 1
+        </button>
       </h3>
 
-      <div class="accordion__content">
-        <p>This is the content for section 1. The accordion component allows you to show and hide content in a collapsible panel.</p>
+      <div id="accordion-section-01"
+           class="accordion__content"
+           role="region"
+           aria-labelledby="accordion-trigger-01">
+        <p>This is the content for section 1. The accordion component allows you to show and hide content in a
+          collapsible panel.</p>
       </div>
     </div>
 
     <div class="accordion">
       <h3 class="accordion__heading">
-        <button class="accordion__trigger" aria-expanded="false">Accordion Section 2</button>
+        <button id="accordion-trigger-02"
+                class="accordion__trigger"
+                aria-expanded="false"
+                aria-controls="accordion-section-02">
+          Accordion Section 2
+        </button>
       </h3>
 
-      <div class="accordion__content">
+      <div id="accordion-section-02"
+           class="accordion__content"
+           role="region"
+           aria-labelledby="accordion-trigger-02">
         <p>This is the content for section 2. When you click on the header, this content will toggle visibility.</p>
       </div>
     </div>
 
     <div class="accordion">
       <h3 class="accordion__heading">
-        <button class="accordion__trigger" aria-expanded="false">Accordion Section 3</button>
+        <button id="accordion-trigger-03"
+                class="accordion__trigger"
+                aria-expanded="false"
+                aria-controls="accordion-section-03">
+          Accordion Section 3
+        </button>
       </h3>
 
-      <div class="accordion__content">
+      <div id="accordion-section-03"
+           class="accordion__content"
+           role="region"
+           aria-labelledby="accordion-trigger-03">
         <p>This is the content for section 3. The accordion is fully accessible and can be controlled via keyboard.</p>
       </div>
     </div>
@@ -124,10 +149,10 @@
       <pre>
       &lt;div class="c-accordion"&gt;
         &lt;h3 class="c-accordion__heading"&gt;
-          &lt;button class="c-accordion__trigger" aria-expanded="false"&gt;Accordion Section&lt;/button&gt;
+          &lt;button id="accordion-trigger-01" class="c-accordion__trigger" aria-expanded="false" aria-controls="accordion-section-01"&gt;Accordion Section&lt;/button&gt;
         &lt;/h3&gt;
 
-        &lt;div class="c-accordion__content"&gt;
+        &lt;div id="accordion-section-01" class="c-accordion__content" role="region" aria-labelledby="accordion-trigger-01"&gt;
           &lt;p&gt;This is the accordion content.&lt;/p&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -138,7 +163,7 @@
     <div class="code-example">
       <pre>
       // Initialize all accordions on the page
-      document.querySelectorAll('.c-accordion').forEach(accordion => {
+      document.querySelectorAll('.accordion').forEach(accordion => {
           new A11yAccordion(accordion);
       });
       </pre>
