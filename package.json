@@ -2,21 +2,53 @@
   "name": "@stierpm/a11y-components",
   "version": "1.0.0",
   "description": "A collection of front-end JavaScript libraries that adhere ceremoniously with WCAG guidelines.",
-  "homepage": "https://github.com/stierpm/a11y-components#readme",
-  "bugs": {
-    "url": "https://github.com/stierpm/a11y-components/issues"
+  "main": "dist/a11y-components.umd.js",
+  "module": "dist/a11y-components.esm.js",
+  "type": "module",
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/a11y-components.esm.js",
+      "require": "./dist/a11y-components.umd.js"
+    },
+    "./src": "./src/index.js",
+    "./components/A11yAccordion": "./src/components/A11yAccordion.js"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "accordion",
+    "wcag",
+    "frontend",
+    "javascript"
+  ],
+  "author": "Philip Stier",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.0.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stierpm/a11y-components.git"
   },
-  "license": "ISC",
-  "author": "Philip Stier",
-  "type": "commonjs",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bugs": {
+    "url": "https://github.com/stierpm/a11y-components/issues"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "homepage": "https://github.com/stierpm/a11y-components#readme"
 }

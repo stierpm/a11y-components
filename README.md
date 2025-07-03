@@ -18,7 +18,7 @@ A collection of front-end JavaScript libraries that adhere ceremoniously with WC
 
 ### Installation
 
-`import { A11yAccordion } from '@stierpm/a11y-components/components/A11YAccordion.js';`
+`npm install @stierpm/a11y-components`
 
 ### Basic Usage
 
@@ -41,19 +41,26 @@ A collection of front-end JavaScript libraries that adhere ceremoniously with WC
 **JavaScript**
 
 ```
+import { A11yAccordion } from '@stierpm/a11y-components';
+
 document.addEventListener('DOMContentLoaded', function() { 
     document.querySelectorAll('.accordion').forEach(accordion => {
         new A11yAccordion(accordion);
     });
 });
+
 ```
+or custom configuration
+```
+import { A11yAccordion } from '@stierpm/a11y-components';
 
-### Required CSS Classes
+// Custom options
+const accordion = new A11yAccordion(element, {
+    triggerSelector: '.my-custom-trigger[aria-controls]',
+    expandedClass: 'my-expanded-state'
+});
 
-- `.accordion` - Container for the accordion component
-- `.accordion__trigger` - The clickable header button
-- `.accordion__content` - The collapsible content panel
-- `.is-expanded` - Applied to both trigger and content when expanded
+```
 
 ### Required HTML Attributes
 
