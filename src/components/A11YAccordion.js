@@ -9,10 +9,19 @@
  * as described by WCAG: https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
  */
 export class A11yAccordion {
-  constructor(element) {
-    this.expandedClass = 'is-expanded';
+  constructor(element, options = {}) {
+    // Default options
+    const defaultOptions = {
+      triggerSelector: '.accordion__trigger[aria-controls]',
+      expandedClass: 'is-expanded',
+    };
+
+    // Merge default options with user-provided options
+    this.options = { ...defaultOptions, ...options };
+
+    this.expandedClass = this.options.expandedClass;
     this.element = element;
-    this.accordionTrigger = this.element.querySelector('.accordion__trigger[aria-controls]');
+    this.accordionTrigger = this.element.querySelector(this.options.triggerSelector);
     this.accordionPanel = this.element.querySelector(`#${this.getControlledByID(this.accordionTrigger)}`);
     this.init();
   }
