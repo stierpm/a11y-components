@@ -22,7 +22,7 @@ export class A11yAccordion {
     this.expandedClass = this.options.expandedClass;
     this.element = element;
     this.accordionTrigger = this.element.querySelector(this.options.triggerSelector);
-    this.accordionPanel = this.element.querySelector(`#${this.getControlledByID(this.accordionTrigger)}`);
+    this.accordionPanel = this.element.querySelector(`#${A11yAccordion.getControlledByID(this.accordionTrigger)}`);
     this.init();
   }
 
@@ -110,7 +110,9 @@ export class A11yAccordion {
    *
    * @return {boolean} True if the accordion is expanded, otherwise false.
    */
-  isExpanded = () => this.accordionTrigger.classList.contains(this.expandedClass);
+  isExpanded() {
+    return this.accordionTrigger.classList.contains(this.expandedClass);
+  }
 
   /**
    * Retrieves the ID of the element controlled by the given target element.
@@ -123,5 +125,7 @@ export class A11yAccordion {
    * @returns {string | null} The value of the `aria-controls` attribute, or null if the attribute
    * is not present.
    */
-  getControlledByID = (target) => target.getAttribute('aria-controls');
+  static getControlledByID(target) {
+    return target.getAttribute('aria-controls');
+  }
 }
