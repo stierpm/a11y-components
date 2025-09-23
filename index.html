@@ -48,7 +48,8 @@
       padding: 15px;
       margin-bottom: 20px;
     }
-    .accordion__trigger {
+    .accordion__trigger,
+    .tab-content__trigger {
       align-items: center;
       background-color: var(--fed-tools-clr-gray-100);
       border: none;
@@ -75,6 +76,29 @@
     .accordion__content.is-expanded {
       display: block;
     }
+    .accordion__content p {
+      margin: 0;
+    }
+    .tab-content__navigation {
+      display: flex;
+      gap: 10px;
+    }
+    .tab-content__group {
+      margin-top: 15px;
+    }
+    .tab-content__group .tab-content__content {
+      display: none;
+    }
+    .tab-content__group.is-expanded .tab-content__content {
+      display: block;
+    }
+    .tab-content__content {
+      padding: 15px;
+    }
+    .tab-content__content p {
+      margin: 0;
+    }
+    footer {}
   </style>
 </head>
 <body>
@@ -87,7 +111,11 @@
 <main>
   <section id="accordion">
     <h2>Accordion Component</h2>
-    <p>An accessible accordion component that follows WCAG guidelines.</p>
+    <p>An accessible accordion component that follows
+      <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/examples/accordion/" target="_blank">
+        WCAG guidelines
+      </a>.
+    </p>
 
     <div class="accordion">
       <h3 class="accordion__heading">
@@ -147,36 +175,189 @@
     <h3>HTML Structure</h3>
     <div class="code-example">
       <pre>
-      &lt;div class="c-accordion"&gt;
-        &lt;h3 class="c-accordion__heading"&gt;
-          &lt;button id="accordion-trigger-01" class="c-accordion__trigger" aria-expanded="false" aria-controls="accordion-section-01"&gt;Accordion Section&lt;/button&gt;
-        &lt;/h3&gt;
+&lt;div class="accordion"&gt;
+  &lt;h3 class="accordion__heading"&gt;
+    &lt;button id="accordion-trigger-01" class="accordion__trigger" aria-expanded="false" aria-controls="accordion-section-01"&gt;Accordion Section&lt;/button&gt;
+  &lt;/h3&gt;
 
-        &lt;div id="accordion-section-01" class="c-accordion__content" role="region" aria-labelledby="accordion-trigger-01"&gt;
-          &lt;p&gt;This is the accordion content.&lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+  &lt;div id="accordion-section-01" class="accordion__content" role="region" aria-labelledby="accordion-trigger-01"&gt;
+    &lt;p&gt;This is the accordion content.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
       </pre>
     </div>
 
     <h3>JavaScript Initialization</h3>
     <div class="code-example">
       <pre>
-      // Initialize all accordions on the page
-      document.querySelectorAll('.accordion').forEach(accordion => {
-          new A11yAccordion(accordion);
-      });
+// Initialize all accordions on the page
+document.querySelectorAll('.accordion').forEach(accordion => {
+    new A11yAccordion(accordion);
+});
+      </pre>
+    </div>
+  </section>
+
+  <section id="tab-content">
+    <h2>Tab Content Component</h2>
+    <p>An accessible tabbed content element that follows
+      <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/" target="_blank">
+        WCAG guidelines
+      </a>.
+    </p>
+
+    <div class="tab-content">
+      <div role="tablist" class="tab-content__navigation"></div>
+
+      <div id="tab-content-01"
+           class="tab-content__group is-expanded"
+           role="tabpanel"
+           aria-labelledby="tab-tab-content-01">
+        <button type="button"
+                id="tab-tab-content-01"
+                class="tab-content__trigger is-expanded"
+                role="tab"
+                aria-haspopup="true"
+                aria-selected="true"
+                aria-expanded="true"
+                aria-controls="tab-content-01">
+          Tab 01
+        </button>
+
+        <div class="tab-content__content">
+          <p>Text content goes here - Tab 01</p>
+        </div>
+      </div>
+
+      <div id="tab-content-02"
+           class="tab-content__group"
+           role="tabpanel"
+           aria-labelledby="tab-tab-content-02">
+        <button type="button"
+                id="tab-tab-content-02"
+                class="tab-content__trigger"
+                role="tab"
+                aria-haspopup="true"
+                aria-selected="true"
+                aria-expanded="true"
+                aria-controls="tab-content-02">
+          Tab 02
+        </button>
+
+        <div class="tab-content__content">
+          <p>Text content goes here - Tab 02</p>
+        </div>
+      </div>
+
+      <div id="tab-content-03"
+           class="tab-content__group is-expanded"
+           role="tabpanel"
+           aria-labelledby="tab-tab-content-03">
+        <button type="button"
+                id="tab-tab-content-03"
+                class="tab-content__trigger"
+                role="tab"
+                aria-haspopup="true"
+                aria-selected="true"
+                aria-expanded="true"
+                aria-controls="tab-content-03">
+          Tab 03
+        </button>
+
+        <div class="tab-content__content">
+          <p>Text content goes here - Tab 03</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>HTML Structure</h3>
+    <div class="code-example">
+      <pre>
+&lt;div class="tab-content"&gt;
+  &lt;div role="tablist" class="tab-content__navigation"&gt;&lt;/div&gt;
+
+  &lt;div id="tab-content-01"
+       class="tab-content__group is-expanded"
+       role="tabpanel"
+       aria-labelledby="tab-tab-content-01"&gt;
+    &lt;button type="button"
+            id="tab-tab-content-01"
+            class="tab-content__trigger is-expanded"
+            role="tab"
+            aria-haspopup="true"
+            aria-selected="true"
+            aria-expanded="true"
+            aria-controls="tab-content-01"&gt;
+      Tab 01
+    &lt;/button&gt;
+
+    &lt;div class="tab-content__content"&gt;
+      &lt;p&gt;Text content goes here - Tab 01&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id="tab-content-02"
+       class="tab-content__group"
+       role="tabpanel"
+       aria-labelledby="tab-tab-content-02"&gt;
+    &lt;button type="button"
+            id="tab-tab-content-02"
+            class="tab-content__trigger"
+            role="tab"
+            aria-haspopup="true"
+            aria-selected="true"
+            aria-expanded="true"
+            aria-controls="tab-content-02"&gt;
+      Tab 02
+    &lt;/button&gt;
+
+    &lt;div class="tab-content__content"&gt;
+      &lt;p&gt;Text content goes here - Tab 02&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id="tab-content-03"
+       class="tab-content__group is-expanded"
+       role="tabpanel"
+       aria-labelledby="tab-tab-content-03"&gt;
+    &lt;button type="button"
+            id="tab-tab-content-03"
+            class="tab-content__trigger"
+            role="tab"
+            aria-haspopup="true"
+            aria-selected="true"
+            aria-expanded="true"
+            aria-controls="tab-content-03"&gt;
+      Tab 03
+    &lt;/button&gt;
+
+    &lt;div class="tab-content__content"&gt;
+      &lt;p&gt;Text content goes here - Tab 03&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </pre>
+    </div>
+
+    <h3>JavaScript Initialization</h3>
+    <div class="code-example">
+      <pre>
+// Initialize all Tab Content elements on the page
+document.querySelectorAll('.tab-content').forEach((tabContent) => {
+    new A11yTabContent(tabContent);
+});
       </pre>
     </div>
   </section>
 </main>
 
 <footer>
-  <p>&copy; 2023 FED Tools. All rights reserved.</p>
+  <p>&copy; 2025 Javascript A11Y (Accessibility) Components. All rights reserved. By Philip Stier.</p>
 </footer>
 
 <script type="module">
   import { A11yAccordion } from './src/components/A11YAccordion.js';
+  import { A11yTabContent } from './src/components/A11YTabContent.js';
 
   // Initialize components after the DOM is fully loaded
   document.addEventListener('DOMContentLoaded', function() {
@@ -184,6 +365,10 @@
     document.querySelectorAll('.accordion').forEach(accordion => {
       new A11yAccordion(accordion);
     });
+
+    document.querySelectorAll('.tab-content').forEach(tabContent => {
+      new A11yTabContent(tabContent);
+    })
   });
 </script>
 </body>
