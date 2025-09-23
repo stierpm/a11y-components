@@ -1,6 +1,6 @@
 {
   "name": "@stierpm/a11y-components",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "A collection of front-end JavaScript libraries that adhere ceremoniously with WCAG guidelines.",
   "main": "dist/a11y-components.umd.js",
   "module": "dist/a11y-components.esm.js",
@@ -22,7 +22,8 @@
       "require": "./dist/a11y-components.umd.js"
     },
     "./src": "./src/index.js",
-    "./components/A11yAccordion": "./src/components/A11yAccordion.js"
+    "./components/A11yAccordion": "./src/components/A11yAccordion.js",
+    "./components/A11YTabContent": "./src/components/A11YTabContent.js"
   },
   "keywords": [
     "accessibility",
