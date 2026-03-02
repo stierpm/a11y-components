@@ -3,6 +3,18 @@
 [![npm version](https://badge.fury.io/js/%40stierpm%2Fa11y-components.svg)](https://badge.fury.io/js/%40stierpm%2Fa11y-components)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+> ⚠️ **Deprecated — Do Not Use for New Projects**
+>
+> This package is deprecated and is no longer actively maintained.
+> It will not receive continued support, updates, or fixes.
+> Please do not use this package in new development.
+
+## 📦 npm Registry Deprecation (Maintainers)
+
+To mark published versions as deprecated on npm, run:
+
+`npm deprecate "@stierpm/a11y-components@*" "This package is deprecated and no longer maintained. Do not use in new projects."`
+
 A collection of front-end JavaScript libraries that adhere ceremoniously with WCAG guidelines. This package provides accessible, keyboard-navigable UI components including accordions and tab content with full ARIA support and responsive design capabilities.
 
 ## 🏷️ Keywords
